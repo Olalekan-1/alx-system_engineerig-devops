@@ -1,2 +1,6 @@
 #!/bin/bash
 mkdir -p welcome/to/school
+
+select  in; do
+    $
+done
