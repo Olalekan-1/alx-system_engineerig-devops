@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# prints `Best School` with `while loop`
+
+i=0
+var=10
+while [ "$i" -lt "$var" ]
+do
+	echo "Best School"
+	i=$((i + 1))
+done

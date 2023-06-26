@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# prints the files in the current directory
+
+var="$(ls ./)"
+
+for item in $var
+do
+	name="${item#*-}"
+	echo "$name"
+done
