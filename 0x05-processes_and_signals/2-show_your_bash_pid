@@ -2,4 +2,4 @@
 # display lines containing bash process
 # shellcheck disable=SC2009
 
-ps aux | grep bash
+ps -f -aux | grep bash

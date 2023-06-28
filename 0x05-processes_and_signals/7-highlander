@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+# Handle the sig_term
+
 function handle_sigterm()
 {
 	echo "I am invincible!!!"

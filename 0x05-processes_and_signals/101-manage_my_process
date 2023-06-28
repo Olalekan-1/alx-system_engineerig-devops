@@ -1,0 +1,42 @@
+#!/usr/bin/env bash
+# implement init process management
+
+pidfile="/var/run/my_process.pid"
+
+start()
+{
+	./manage_my_process &
+	echo "$$"  > $pidfile
+	echo "manage_my_process started"
+}
+
+stop()
+{
+	kill "$(pgrep -f ./manage_my_process)"
+	rm $pidfile
+	echo "manage_my_process stopped"
+}
+
+restart()
+{
+	kill "$(pgrep -f ./manage_my_process)"
+	rm $pidfile
+	./manage_my_process &
+	echo "$$"  > $pidfile
+	echo "manage_my_process restarted"
+}
+
+
+case "$1" in
+	start)
+		start
+		;;
+	stop)
+		stop
+		;;
+	restart)
+		restart
+		;;
+	*)
+		echo "Usage: manage_my_process {start|stop|restart}"
+esac
