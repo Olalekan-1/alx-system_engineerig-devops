@@ -1,4 +1,4 @@
-
+# create a file with puppet
 
 file { '/tmp/school':
   ensure  => 'file',
