@@ -1,7 +1,7 @@
-
+# Include the stdlib module
 class { 'stdlib': }
 
-file_line { 'identity file set to school':
+file_line { 'identity file name is set to school':
   ensure => 'present',
   path   => '/etc/ssh/ssh_config',
   line   => '    IdentityFile ~/.ssh/school',
