@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # server detail 
 
@@ -8,4 +8,3 @@ private_key="~/.ssh/school"
 
 # SSH connection using single-character flags
 ssh -i "$private_key" "$user@$server_ip"
-
