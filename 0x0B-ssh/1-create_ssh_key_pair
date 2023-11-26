@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+#creates a new ssh key pair with specified information
+
+ssh-keygen -t rsa -b 4096 -N betty -f school
