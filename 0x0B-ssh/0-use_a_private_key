@@ -1,10 +1,3 @@
 #!/usr/bin/env bash
 # connect to a remote server
-# server detail 
-
-server_ip="54.237.66.181"
-user="ubuntu"
-private_key="~/.ssh/school"
-
-# SSH connection using single-character flags
-ssh -i "$private_key" "$user@$server_ip"
+ssh -i ~/.ssh/school ubuntu@54.237.66.181
