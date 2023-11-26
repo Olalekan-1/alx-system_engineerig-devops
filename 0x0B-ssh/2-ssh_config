@@ -1,0 +1,10 @@
+# ssh configuration
+Host ola
+  HostName 54.237.66.181
+  User ubuntu
+  IdentityFile ~/.ssh/school
+  PasswordAuthentication no
+  SendEnv LANG LC_*
+  HashKnownHosts yes
+  GSSAPIAuthentication yes
+  GSSAPIDelegateCredentials no
