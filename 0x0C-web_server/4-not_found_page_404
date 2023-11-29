@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# configure the nginix server
 
 # Update package repositories
 sudo apt-get update
