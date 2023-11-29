@@ -24,21 +24,3 @@ service { 'nginx':
   require => [File['/etc/nginx/sites-available/default'], File['/var/www/html/404.html']],
 }
 
-
-# Nginx default configuration
-server {
-  listen 80 default_server;
-  listen [::]:80 default_server;
-  root /var/www/html;
-  index index.html index.htm index.nginx-debian.html;
-  server_name _;
-
-  location / {
-    try_files $uri $uri/ =404;
-  }
-
-  location ~ /redirect_me {
-    return 301 https://www.example.com;
-  }
-}
-
