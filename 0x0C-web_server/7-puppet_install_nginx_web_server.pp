@@ -1,32 +1,19 @@
-# Define a class for Nginx installation and configuration
+# Install and configure Nginx
 class { 'nginx':
   package_ensure => 'latest',
 }
 
-# Define the default Nginx server configuration
+# Configure Nginx default server
 file { '/etc/nginx/sites-available/default':
   ensure  => file,
-  content => "# Nginx default configuration\n
-              server {\n
-                listen 80 default_server;\n
-                listen [::]:80 default_server;\n
-                root /var/www/html;\n
-                index index.html index.htm index.nginx-debian.html;\n
-                server_name _;\n
-                location / {\n
-                  try_files \$uri \$uri/ =404;\n
-                }\n
-                location ~ /redirect_me {\n
-                  return 301 https://www.example.com;\n
-                }\n
-              }\n",
+  content => template('nginx/default.conf.erb'),
   require => Class['nginx'],
 }
 
-# Define the custom 404 page
+# Create a custom 404 page
 file { '/var/www/html/404.html':
   ensure  => file,
-  content => "Ceci n'est pas une page",
+  content => 'Ceci n\'est pas une page',
   require => Class['nginx'],
 }
 
@@ -35,5 +22,23 @@ service { 'nginx':
   ensure  => 'running',
   enable  => true,
   require => [File['/etc/nginx/sites-available/default'], File['/var/www/html/404.html']],
+}
+
+
+# Nginx default configuration
+server {
+  listen 80 default_server;
+  listen [::]:80 default_server;
+  root /var/www/html;
+  index index.html index.htm index.nginx-debian.html;
+  server_name _;
+
+  location / {
+    try_files $uri $uri/ =404;
+  }
+
+  location ~ /redirect_me {
+    return 301 https://www.example.com;
+  }
 }
 
