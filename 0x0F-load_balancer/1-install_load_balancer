@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+# Update the package repository
+sudo apt-get update
+
+# Install HAProxy
+sudo apt-get install --no-install-recommends software-properties-common
+sudo add-apt-repository ppa:vbernat/haproxy-2.7
+sudo apt-get -y install haproxy=2.7.\*
+
+
+sudo sed -i -e '$aENABLED=1\n' /etc/default/haproxy
+sudo sed -i -e '$a\listen balancer\n\tbind :80\n\tbalance roundrobin\n\tserver 265506-web-01 54.237.66.181:80 check\n\tserver 265506-web-02 54.160.95.72:80 check\n' /etc/haproxy/haproxy.cfg
+sudo service haproxy restart
