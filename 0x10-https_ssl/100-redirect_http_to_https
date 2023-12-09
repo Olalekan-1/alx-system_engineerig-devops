@@ -19,7 +19,7 @@ defaults
 
 frontend http_front
     bind *:80
-    bind *:443 ssl crt /etc/letsencrypt/live/www.olaks.tech/fullchain.pem
+    bind *:443 ssl crt /etc/letsencrypt/live/www.olaks.tech/fullchain.pem3
     http-request redirect scheme https if !{ ssl_fc }
     http-response set-header Strict-Transport-Security max-age=31536000
     default_backend http_back
