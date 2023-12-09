@@ -37,13 +37,13 @@ defaults
 frontend http_front
 	# bind *:80
 	bind *:443 ssl crt /etc/letsencrypt/live/www.olaks.tech/fullchain.pem3
-	http-request add-header X-forwarded-proto https if { ssl_fc }
-	# http-request redirect scheme https if !{ssl_fc }
+	http-request add-header X-forwarded-proto http
+	http-request redirect scheme https if !{ ssl_fc }
 	use_backend http_back
 
 backend http_back
 	balance roundrobin
-	# redirect scheme https if !{ssl_fc }
+	redirect scheme https if !{ ssl_fc }
 	server 265506-web-01 54.237.66.181
 	server 265506-web-02 54.160.95.72
 
