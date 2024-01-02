@@ -21,13 +21,12 @@ if __name__ == "__main__":
     file_name = f"{employee_id}.csv"
 
     for dict_ in tasks_response:
-        row_data = []
-        row_data.append(str(employee_id))
-        row_data.append(employee_name)
-        row_data.append(dict_['completed'])
-        row_data.append(dict_['title'])
+        row_data = [employee_id, employee_name,
+                    dict_.get('completed'),
+                    dict_.get('title')
+                    ]
         all_data.append(row_data)
 
-    with open(file_name, mode='w') as file:
+    with open(file_name, mode='w', newline='') as file:
         writer = csv.writer(file, quoting=csv.QUOTE_ALL)
         writer.writerows(all_data)
