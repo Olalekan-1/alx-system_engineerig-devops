@@ -14,7 +14,7 @@ if __name__ == "__main__":
     endpoint2 = f"https://jsonplaceholder.typicode.com/todos?userId={argv[1]}"
 
     name_response = requests.get(endpoint1).json()
-    employee_name = name_response[0]['name']
+    employee_name = name_response[0]['username']
 
     tasks_response = requests.get(endpoint2).json()
     all_data = []
