@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 
-""" Make a request to the reddit api"""
+""" Make a request to the reddit api
+"""
 import requests
 
 
